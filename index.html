@@ -6,7 +6,16 @@
     <title>Unity WebGL Player | INFINITICS POC</title>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      UnityLoader.instantiate("unityContainer", "Build/infinitics.json");
+
+      var gameInstance = UnityLoader.instantiate("unityContainer", "Build/alejandroarciniegas.github.io.json");
+      window.addEventListener("resize", onResize);
+
+      function onResize() {
+      	gameInstance.SendMessage("DebugText", "SetWidth", window.innerWidth);
+      	gameInstance.SendMessage("DebugText", "SetHeight", window.innerHeight);
+      	gameInstance.SendMessage("DebugText", "OnResize");
+      }
+
     </script>
   </head>
   <body style = "margin:0; overflow: hidden;">
